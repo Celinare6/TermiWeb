@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emulador de Consola</title>
+<style>
+    body {
+        font-family: monospace;
+        background-color: #1e1e1e;
+        color: #ffffff;
+        padding: 20px;
+    }
+    #console {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        overflow-y: scroll;
+        height: 300px;
+    }
+    #input-container {
+        margin-top: 10px;
+    }
+    #input {
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        width: calc(100% - 50px);
+    }
+    #submit {
+        background-color: #007acc;
+        color: #ffffff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div id="console"></div>
+<div id="input-container">
+    <input type="text" id="input" autocomplete="off" autofocus>
+    <button id="submit">Ejecutar</button>
+</div>
+
+<script>
+    document.getElementById('submit').addEventListener('click', function() {
+        var input = document.getElementById('input').value;
+        document.getElementById('console').innerText += '> ' + input + '\n';
+        document.getElementById('input').value = '';
+        executeCommand(input);
+    });
+
+    function executeCommand(command) {
+        // Aquí deberías implementar la lógica para ejecutar los comandos en el servidor y manejar las respuestas
+        // Por ejemplo, puedes usar AJAX para enviar el comando al servidor y recibir la salida.
+        // Luego, actualiza el contenido de #console con la salida del comando.
+        // Este ejemplo solo simula la ejecución de algunos comandos.
+
+        var output = '';
+
+        // Ejemplo: Comando git
+        if (command.startsWith('git')) {
+            output = 'Comando git ejecutado.\n'; // Aquí deberías ejecutar el comando git en el servidor y obtener la salida real.
+        }
+
+        // Ejemplo: Comando node
+        else if (command.startsWith('node')) {
+            output = 'Comando node ejecutado.\n'; // Aquí deberías ejecutar el comando node en el servidor y obtener la salida real.
+        }
+
+        // Ejemplo: Comando npm
+        else if (command.startsWith('npm')) {
+            output = 'Comando npm ejecutado.\n'; // Aquí deberías ejecutar el comando npm en el servidor y obtener la salida real.
+        }
+
+        // Ejemplo: Comando nvm
+        else if (command.startsWith('nvm')) {
+            output = 'Comando nvm ejecutado.\n'; // Aquí deberías ejecutar el comando nvm en el servidor y obtener la salida real.
+        }
+
+        document.getElementById('console').innerText += output + '\n';
+        document.getElementById('console').scrollTop = document.getElementById('console').scrollHeight;
+    }
+</script>
+</body>
+</html>
